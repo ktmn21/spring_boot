@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:0001/customers
+    username: kutman_1
+    password: 12345
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+
+  application:
+    name:
+      practice_1
+
+server:
+  error:
+    include-message: always
