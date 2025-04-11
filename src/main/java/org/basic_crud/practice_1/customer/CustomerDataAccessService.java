@@ -8,6 +8,7 @@ import java.util.Optional;
 @Repository
 public class CustomerDataAccessService implements CustomerDAO{
     private final CustomerRepository customerRepository;
+    private Integer id;
 
     public CustomerDataAccessService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
@@ -32,4 +33,21 @@ public class CustomerDataAccessService implements CustomerDAO{
     public boolean existsCustomerWithEmail(String email) {
         return customerRepository.existsCustomerByEmail(email);
     }
+
+    @Override
+    public void deleteCustomerById(Integer id) {
+        customerRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        customerRepository.save(customer);
+    }
+
+    @Override
+    public boolean existsCustomerWithId(Integer id) {
+        return customerRepository.existsCustomerById(id);
+    }
+
+
 }

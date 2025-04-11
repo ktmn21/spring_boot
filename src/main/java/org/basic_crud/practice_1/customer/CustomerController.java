@@ -1,5 +1,6 @@
 package org.basic_crud.practice_1.customer;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,5 +31,21 @@ public class CustomerController {
             @RequestBody CustomerRegistrationRequest customerRegistrationRequest
     ){
         customerService.addCustomer(customerRegistrationRequest);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteCustomerById(
+            @PathVariable("id")
+            Integer id
+    ){
+        customerService.deleteCustomerById(id);
+    }
+
+    @PutMapping("{customerId}")
+    public void updateCustomer(
+            @PathVariable("customerId") Integer customerId,
+            @RequestBody CustomerUpdateRequest customerUpdateRequest
+    ){
+        customerService.updateCustomer(customerId, customerUpdateRequest);
     }
 }
